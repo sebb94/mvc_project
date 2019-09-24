@@ -6,7 +6,10 @@
         echo "Pages loaded";
     }
     public function about(){
-          $this->view('pages/about');
+        $data = [
+            'title' => 'About'
+        ];
+          $this->view('pages/about',$data);
     }
     public function index(){
         $data = [
@@ -14,8 +17,6 @@
         ];
         $this->view('pages/index', $data);
 
-        echo APPROOT;
-        echo URLROOT;
 
     }
 
