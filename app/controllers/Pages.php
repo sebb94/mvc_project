@@ -14,6 +14,9 @@
         ];
         $this->view('pages/index', $data);
 
+        echo APPROOT;
+        echo URLROOT;
+
     }
 
  }
