@@ -8,5 +8,6 @@ define('DB_NAME','mvcp');
 define('APPROOT', dirname(dirname(__FILE__)));
 define('URLROOT', 'https://localhost/mvc_project');
 define('SITENAME', 'MVC_PROJECT');
+define('APPVERSION','1.0.0');
 
 ?>
