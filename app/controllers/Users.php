@@ -3,6 +3,7 @@
     class Users extends Controller{
         public function __construct(){
 
+          $this->userModel = $this->model("User");
 
         }
 
@@ -27,8 +28,12 @@
                     $data['name_err'] = "Please enter name";
                 }
 
-                if(empty($data['email'])){
+                    if(empty($data['email'])){
                     $data['email_err'] = "Please enter email";
+                } else{
+                    if($this->userModel->findUserByEmail($data['email'])){
+                          $data['email_err'] = "Email is already taken";   
+                    }
                 }
                 if(empty($data['password'])){
                     $data['password_err'] = "Please enter password";
