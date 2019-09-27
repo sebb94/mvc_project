@@ -51,7 +51,13 @@
                 }
                 
                 if (empty($data['name_err']) && empty($data['email_err']) && empty($data['password_err']) && empty($data['confirm_password_err']) ){
-                    die("SUCCESS");
+                       $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                       if($this->userModel->register($data)){
+                           redirect('users/login');
+                       }else{
+                           die("something went wrong");
+                       }
                 }else{
                     $this->view('users/register', $data);
                 }
@@ -96,7 +102,10 @@
                 }
 
                 if (empty($data['email_err']) && empty($data['password_err']) ){
-                    die("SUCCESS");
+                    
+                 
+
+
                 }else{
                     $this->view('users/login', $data);
                 }
