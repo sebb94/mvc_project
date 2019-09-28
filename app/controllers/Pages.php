@@ -14,6 +14,10 @@
           $this->view('pages/about',$data);
     }
     public function index(){
+
+        if(isLoggedIn()){
+            redirect('posts');
+        }
         
         $data = [
             'title' => 'Welcome',
