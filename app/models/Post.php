@@ -53,7 +53,6 @@ class Post{
     }
 
     public function getPostById($id){
-
         $this->db->query("SELECT * FROM posts WHERE id = :id");
         $this->db->bind(':id',$id);
 
@@ -65,6 +64,10 @@ class Post{
 
     public function deletePost($id){
 
+        $post = $this->postModel->getPostById($id);
+            if($post->user_id != $_SESSION['user_id']){
+                redirect('posts');
+            }
 
         $this->db->query("DELETE FROM posts WHERE id= :id ");
         $this->db->bind(":id",$id);
